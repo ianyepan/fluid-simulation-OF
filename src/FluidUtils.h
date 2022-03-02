@@ -4,20 +4,26 @@
 #include "ofMain.h"
 
 const int N = 64;
-const int iter = 8;
+const int ITER = 8;
 const int SCALE = 4;
 
 namespace FluidUtils {
 
-constexpr int constrain(int x, int low, int high) {
-  x = max(low, x);
-  x = min(high, x);
-  return x;
+template <typename T>
+constexpr auto max(T a, T b) -> T {
+  return a > b ? a : b;
 }
 
 template <typename T>
-constexpr T min(T a, T b) {
+constexpr auto min(T a, T b) -> T {
   return a < b ? a : b;
+}
+
+template <typename T>
+constexpr auto constrain(T x, T low, T high) -> T {
+  x = FluidUtils::max(low, x);
+  x = FluidUtils::min(high, x);
+  return x;
 }
 
 // Get 2D location in 1D array
@@ -49,7 +55,7 @@ inline void lin_solve(const int b,
                       const float a,
                       const float c) {
   float cRecip = 1.0 / c;
-  for (int k = 0; k < iter; ++k) {
+  for (int k = 0; k < ITER; ++k) {
     for (int j = 1; j < N - 1; ++j) {
       for (int i = 1; i < N - 1; ++i) {
         x[IX(i, j)] = cRecip * (x0[IX(i, j)] + a * (x[IX(i + 1, j)] + x[IX(i - 1, j)] +

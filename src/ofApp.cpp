@@ -7,27 +7,25 @@
 #include "vector_float2.hpp"
 
 void ofApp::setup() {
-  ofSetFrameRate(24);
+  ofSetFrameRate(60);
   ofBackground(0);
-  fluid.setup(0.25, 0, 0.0000001);
+  fluid.setup(0.2, 0, 0.0000001);
 }
 
 void ofApp::update() {}
 
 void ofApp::draw() {
-const int cx = (int)(0.25 * ofGetWindowWidth() / SCALE);
-const int cy = (int)(0.25 * ofGetWindowHeight() / SCALE);
+  const int centerX = (int)(0.5 * ofGetWindowWidth() / SCALE);
+  const int centerY = (int)(0.5 * ofGetWindowHeight() / SCALE);
   for (int i = -1; i <= 1; ++i) {
     for (int j = -1; j <= 1; ++j) {
-      fluid.addDensity(cx + i, cy + j, ofRandom(50, 150));
+      fluid.addDensity(centerX + i, centerY + j, ofRandom(50, 150));
     }
   }
   for (int i = 0; i < 2; i++) {
-    auto angle = ofRandom(ofDegToRad(180.0));
-    glm::vec2 v(angle);
-    v *= ofRandom(1.0);
-    fluid.addVelocity(cx, cy, v.x, v.y);
-    // fluid.addVelocity(cx, cy, 0.5, 0.5);
+    auto noise = ofNoise(ofGetElapsedTimef());
+    auto angle = noise * ofDegToRad(360.0f);
+    fluid.addVelocity(centerX, centerY, cosf(angle), sinf(angle));
   }
 
   fluid.step();

@@ -57,7 +57,6 @@ class Fluid {
   }
 
   void renderD() {
-    ofSetColor(255);
     for (int i = 0; i < N; ++i) {
       for (int j = 0; j < N; ++j) {
         auto d = density[FluidUtils::IX(i, j)];
