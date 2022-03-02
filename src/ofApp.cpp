@@ -9,6 +9,8 @@
 void ofApp::setup() {
   ofSetFrameRate(60);
   ofBackground(0);
+  ofSetWindowPosition(ofGetScreenWidth() / 2 - ofGetWindowWidth() / 2,
+                      ofGetScreenHeight() / 2 - ofGetWindowHeight() / 2);
   fluid.setup(0.2, 0, 0.0000001);
 }
 
