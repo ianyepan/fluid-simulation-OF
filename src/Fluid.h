@@ -56,7 +56,7 @@ class Fluid {
     FluidUtils::advect(0, density, s, Vx, Vy, dt);
   }
 
-  void renderD() {
+  void renderD() const {
     for (int i = 0; i < N; ++i) {
       for (int j = 0; j < N; ++j) {
         auto d = density[FluidUtils::IX(i, j)];
