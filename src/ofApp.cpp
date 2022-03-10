@@ -7,7 +7,7 @@
 #include "vector_float2.hpp"
 
 void ofApp::setup() {
-  ofSetFrameRate(60);
+  ofSetFrameRate(30);
   ofBackground(0);
   ofSetWindowPosition(ofGetScreenWidth() / 2 - ofGetWindowWidth() / 2,
                       ofGetScreenHeight() / 2 - ofGetWindowHeight() / 2);
@@ -24,7 +24,7 @@ void ofApp::draw() {
       fluid.addDensity(centerX + i, centerY + j, ofRandom(50, 150));
     }
   }
-  for (int i = 0; i < 2; i++) {
+  for (int i = 0; i < 2; ++i) {
     auto noise = ofNoise(ofGetElapsedTimef());
     auto angle = noise * ofDegToRad(360.0f);
     fluid.addVelocity(centerX, centerY, cosf(angle), sinf(angle));

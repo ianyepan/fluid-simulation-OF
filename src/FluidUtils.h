@@ -151,7 +151,6 @@ inline void advect(const int b,
       int j0i = int(j0);
       int j1i = int(j1);
 
-      // DOUBLE CHECK THIS!!!
       d[IX(i, j)] = s0 * (t0 * d0[IX(i0i, j0i)] + t1 * d0[IX(i0i, j1i)]) +
                     s1 * (t0 * d0[IX(i1i, j0i)] + t1 * d0[IX(i1i, j1i)]);
     }
