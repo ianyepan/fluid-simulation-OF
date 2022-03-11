@@ -3,9 +3,9 @@
 #include "ofAppRunner.h"
 #include "ofMain.h"
 
-const int N = 64;
-const int ITER = 8;
-const int SCALE = 4;
+inline constexpr int N = 128;
+inline constexpr int ITER = 8;
+inline constexpr int SCALE = 4;
 
 namespace FluidUtils {
 
