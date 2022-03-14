@@ -10,26 +10,14 @@ inline constexpr int SCALE = 4;
 namespace FluidUtils {
 
 template <typename T>
-constexpr auto max(T a, T b) -> T {
-  return a > b ? a : b;
-}
-
-template <typename T>
 constexpr auto min(T a, T b) -> T {
   return a < b ? a : b;
 }
 
-template <typename T>
-constexpr auto constrain(T x, T low, T high) -> T {
-  x = FluidUtils::max(low, x);
-  x = FluidUtils::min(high, x);
-  return x;
-}
-
 // Get 2D location in 1D array
-constexpr int IX(int x, int y) {
-  x = constrain(x, 0, N - 1);
-  y = constrain(y, 0, N - 1);
+inline int IX(int x, int y) {
+  x = (int)ofClamp(x, 0, N - 1);
+  y = (int)ofClamp(y, 0, N - 1);
   return x + y * N;
 }
 
