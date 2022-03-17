@@ -6,7 +6,7 @@
 
 #### Relevant references: 
 
-- https://www.youtube.com/watch?v=alhpH6ECFvQ&t=565s
+- https://www.youtube.com/watch?v=alhpH6ECFvQ
 - https://mikeash.com/pyblog/fluid-simulation-for-dummies.html
 
 
